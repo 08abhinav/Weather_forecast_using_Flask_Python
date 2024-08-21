@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block title %}SkyTrack{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-light bg-dark">
+  <a class="navbar-brand " style="color:white; font-size: 2rem; font-family:'Roboto Condensed', sans-serif;">
+    <img src="static/logo.png" width="40" height="40" class="d-inline-block align-top" alt="weblogo" style="margin: 3px 8px;" >
+      SkyTrack
+     <span style="color: white; font-size: 1rem;">Clear Skies, Clear Plans</span>
+  </a>
+</nav>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h3 class="title" style="font-family: 'Montserrat', sans-serif;">
+                    <br>
+                    <b>Enter a city name to see current weather conditions and forecasts.</b>
+                    <br>
+                </h3>
+            </div>
+        </div>
+    </section>
+<section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <form method="POST">
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                <input class="input" name="city" type="text" placeholder="City Name">
+                            </div>
+                            <div class="control">
+                                <button class="btn btn-dark my-2">
+                                    Add City
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+</section>
+{% for weather in weather_data %}
+<br>
+  <div class="col-sm-3" style="margin-left: 35rem;">
+        <div class="card" style="background-color:#4F4F4F">
+              <div class="card-body">
+                      <h3 class="card-title"><span class="title" style="color:white"> {{ weather.city }}</span></h3>
+                       <figure class="image " style="display: flex; justify-content: center">
+                          <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Image" style="background-color: #f0f8ff;">
+                       </figure>
+                      <span class="subtitle" style="font-family: 'Roboto', sans-serif;; font-size: 30px; display:flex; justify-content: center; color: white;"><h5> {{weather.temperature_in_celsius}} °C</h5></span>
+                      <h5><span style="display: flex; justify-content: center; font-family: Georgia, serif; color:white"><b>{{ weather.description }}</b></span></h5>
+                      <br>
+                      <span class="subtitle" style="'Roboto', sans-serif; color:white"><h5>Feels Like: {{weather. feels_like}} °C</h5></span>
+
+                    <p class="card-text" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                        <span class="subtitle" style=" font-family: 'Roboto', sans-serif; "><h5 style="color:white"><img src="static/temp.png"> {{ weather.temperature_in_fahrenheit }}°F</h5></span>
+                        <span class="subtitle" style=" font-family: 'Roboto', sans-serif; color:white"><h5><img src="static/humid.png"> {{ weather.humidity }} RH</h5></span>
+                        <span class="subtitle" style=" font-family: 'Roboto', sans-serif; color:white"><h5><img src="static/visi.png"> {{ weather.visibility }} Km</h5></span>
+                        <span class="subtitle" style=" font-family: 'Roboto', sans-serif; color:white"><h5><img src="static/wind.png"> {{ weather.wind }} mph</h5></span>
+                        <span class="subtitle" style=" font-family: 'Roboto', sans-serif; color:white"><h5>Temp Low: {{weather.temp_min }} °C</h5></span>
+                        <span class="subtitle" style=" font-family: 'Roboto', sans-serif; color:white"><h5>Temp High: {{weather.temp_max }} °C</h5></span>
+                    </p>
+              </div>
+        </div>
+  </div>
+{% endfor %}
+<br>
+ <footer class="footer">
+        <div class="container text-center" >
+            <p class="mb-0">&copy; 2024 Your Company. All rights reserved.</p>
+            <ul class="list-unstyled d-flex justify-content-center mt-2">
+                <li class="mx-2"><a href="#" class="text-dark text-decoration-none">Privacy Policy</a></li>
+                <li class="mx-2"><a href="#" class="text-dark text-decoration-none">Terms of Service</a></li>
+                <li class="mx-2"><a href="#" class="text-dark text-decoration-none">Contact Us</a></li>
+            </ul>
+        </div>
+ </footer>
+{% endblock %}

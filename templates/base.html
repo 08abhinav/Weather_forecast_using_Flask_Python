@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title style="font-family:'Roboto Condensed', sans-serif;">{% block title %}{% endblock %}</title>
+     {% block styles %}
+    <!-- Load Bootstrap-Flask CSS here -->
+    {{ bootstrap.load_css() }}
+    <!-- Link to the styles.css here to apply styling to all the child templates.-->
+<!--    <link rel="stylesheet"  href="{{ url_for('static', filename='css/style.css') }}"/>-->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='logo.png') }}"/>
+    {% endblock %}
+</head>
+<body style="background-color: #5F6A6A">
+{% block content %}
+{% endblock %}
+</body>
+</html>
