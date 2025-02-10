@@ -1,4 +1,4 @@
-#Weather App with Flask
+# Weather App with Flask
 
 Welcome to the Weather App repository! This is a simple web application built using Flask, a popular web framework for Python. This app allows users to check the current weather conditions for a given city.
 
